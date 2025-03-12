@@ -4,8 +4,8 @@ import aui.algebra.Controls
 import aui.algebra.Validation
 import terminus.*
 
-trait TerminusControls extends Controls {
-  self: TerminusAlgebra & TerminusConfiguration =>
+trait TerminusControls extends Controls with TerminusAlgebra {
+  self: TerminusConfiguration =>
   def textField(
       label: String,
       placeholder: String,
@@ -39,12 +39,12 @@ trait TerminusControls extends Controls {
   def choice[A](label: String, options: Seq[(String, A)]): Ui[A] =
     ???
 
-  private val emptyLine = " " * config.width
-  private val emptyInnerLine = " " * config.innerWidth
+  private lazy val emptyLine = " " * config.width
+  private lazy val emptyInnerLine = " " * config.innerWidth
 
-  private val backgroundLine: Program[Unit] =
+  private lazy val backgroundLine: Program[Unit] =
     config.background(Terminal.write(emptyLine))
 
-  private val backgroundPad: Program[Unit] =
+  private lazy val backgroundPad: Program[Unit] =
     config.background(Terminal.write(" " * config.padding))
 }

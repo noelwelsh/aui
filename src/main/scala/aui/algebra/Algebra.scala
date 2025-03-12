@@ -1,5 +1,7 @@
 package aui.algebra
 
+import aui.effect.Controller
+
 trait Algebra {
-  type Ui[A]
+  type Ui[_]
 }

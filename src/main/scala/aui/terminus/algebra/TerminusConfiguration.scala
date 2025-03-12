@@ -11,6 +11,4 @@ final case class Configuration(
   def innerWidth: Int = width - (2 * padding)
 }
 
-trait TerminusConfiguration {
-  def config: Configuration
-}
+trait TerminusConfiguration(val config: Configuration)

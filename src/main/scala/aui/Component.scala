@@ -11,6 +11,9 @@ extension [Alg <: Algebra, A](component: Component[Alg, A]) {
       that: Component[Alg2, B]
   ): Component[Alg & Alg2 & Layout, (A, B)] =
     alg => alg.and(component.apply(alg), that.apply(alg))
+
+  def create(using alg: Alg): alg.Ui[A] =
+    component(alg)
 }
 
 /** Constructors for atomic UI elements. */
