@@ -10,7 +10,11 @@ final case class Tui[S, A](
 ) {
   def create(): A =
     Terminal.run { terminal ?=>
-      draw(terminal)
-      interact(initialState)
+      Terminal.raw {
+        Terminal.alternateScreen {
+          draw(terminal)
+          interact(initialState)
+        }
+      }
     }
 }

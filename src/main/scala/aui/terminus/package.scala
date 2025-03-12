@@ -9,7 +9,7 @@ import terminus.*
 type Algebra = Controls & TerminusAlgebra
 given Algebra: Algebra = new TerminusControls
   with TerminusConfiguration(
-    Configuration(40, 2, (program) => Terminal.background.blue(program))
+    Configuration(60, 2, (program) => Terminal.background.blue(program))
   )
 
 given Controller: Controller[Algebra] =
